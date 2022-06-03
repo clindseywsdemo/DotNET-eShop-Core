@@ -37,6 +37,7 @@ jobs:
         echo "Dev Key: $WS_DevKey"
         echo "WS_PRODUCTNAME "$WS_PRODUCTNAME
         echo "Contains:"$WS_Contains
+        echo contains('Hello world', 'llo') 
         
         echo Downloading WhiteSource Unified Agent
         curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
