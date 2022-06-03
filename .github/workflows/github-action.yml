@@ -32,7 +32,7 @@ jobs:
         GH_BRANCH: $CI_COMMIT_BRANCH
         
       run: |
-        echo "CI_COMMIT_BRANCH = ${CI_COMMIT_BRANCH}"
+        echo "CI_COMMIT_BRANCH = ${CI_COMMIT_REF_NAME}"
         echo "Dev Key: $WS_DevKey"
         echo "WS_PRODUCTNAME "$WS_PRODUCTNAME
         
