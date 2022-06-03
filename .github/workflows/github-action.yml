@@ -5,6 +5,9 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
 
   build:
+    env:
+      WS_ProductionBranches: "main,release"
+      WS_DevKey: "e9325f5150604d60a5a5843e6155b65eb4c6ff62b16847c2895da8de40747c40"
      
     runs-on: ubuntu-latest
     steps:
@@ -26,7 +29,12 @@ jobs:
         WS_PRODUCTNAME: ${{github.event.repository.name}}
         WS_PROJECTNAME: ${{github.ref}}
         WS_FILESYSTEMSCAN: false
+        GH_BRANCH: CI_COMMIT_BRANCH
       run: |
+        echo "Branch Scanning: $GH_BRANCH"
+        echo "Dev Key: $WS_DevKey"
+        
+        
         echo Downloading WhiteSource Unified Agent
         curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
         if [[ "$(curl -sL https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar.sha256)" != "$(sha256sum wss-unified-agent.jar)" ]] ; then
