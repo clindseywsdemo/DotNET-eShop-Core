@@ -26,7 +26,7 @@ jobs:
       run:  echo "Woo Ho!"
      
     - name: Set Org API Key2
-      if:   contains('main,release', '${GITHUB_REF_NAME}')
+      if:   contains('${GITHUB_REF_NAME}', 'main,release')
       run:  echo "Woo Ho 2!"
      
       
