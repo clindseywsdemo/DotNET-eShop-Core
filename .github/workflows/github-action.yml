@@ -21,6 +21,15 @@ jobs:
     - name: Build with dotnet
       run: dotnet build ./eShopOnWeb.sln --configuration Release
       
+    - name: Set Org API Key
+      if:   contains('Hello world', 'llo')
+      run:  echo "Woo Ho!"
+     
+    - name: Set Org API Key2
+      if:   contains($WS_ProductionBranches, '${GITHUB_REF_NAME}')
+      run:  echo "Woo Ho 2!"
+     
+      
     - name: WhiteSource Unified Agent Scan
       env:
         WS_APIKEY: ${{secrets.APIKEY}}
@@ -35,10 +44,6 @@ jobs:
         echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
         echo "Dev Key: $WS_DevKey"
         echo "WS_PRODUCTNAME "$WS_PRODUCTNAME
-        
-        if [ contains('Hello world', 'llo') ]; then
-          echo "test successful"
-        fi
         
         echo Downloading WhiteSource Unified Agent
         curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
