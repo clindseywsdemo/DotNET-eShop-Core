@@ -32,7 +32,7 @@ jobs:
         GH_BRANCH: ${{ github.head_ref }}
         
       run: |
-        echo "CI_COMMIT_BRANCH = "${GITHUB_REF_NAME}
+        echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
         echo "Dev Key: $WS_DevKey"
         echo "WS_PRODUCTNAME "$WS_PRODUCTNAME
         
