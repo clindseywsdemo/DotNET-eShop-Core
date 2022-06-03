@@ -46,7 +46,7 @@ jobs:
 
     - name: WhiteSource Unified Agent Scan
       env:
-        WS_APIKEY: $KeyToUse
+        WS_APIKEY: env.KeyToUse
         WS_USERKEY: ${{secrets.USERKEY}}
         WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
         WS_PRODUCTNAME: ${{github.event.repository.name}}
