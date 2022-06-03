@@ -19,6 +19,11 @@ jobs:
         dotnet-version: '6.0.x'
         include-prerelease: true
 
+    - name: WhiteSource Unified Agent Scan
+      run: |
+        echo "WS_Contains "$WS_Contains
+        
+        
       
     - name: Set Org API Key
       if:   contains('Hello main world', '$WS_Contains')
