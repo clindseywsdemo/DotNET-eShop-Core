@@ -35,7 +35,6 @@ jobs:
         echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
         echo "Dev Key: $WS_DevKey"
         echo "WS_PRODUCTNAME "$WS_PRODUCTNAME
-        echo "Contains:"$WS_Contains
         
         if [ contains('Hello world', 'llo') ]; then
           echo "test successful"
