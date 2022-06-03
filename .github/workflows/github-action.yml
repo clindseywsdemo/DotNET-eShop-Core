@@ -16,7 +16,9 @@ jobs:
         
     - name: Set Environment Var for Branch
       run:  echo PROJECT_TO_TEST=${GITHUB_REF_NAME} >> $GITHUB_ENV
-            echo WS_ProductionBranches=","$WS_ProductionBranches"," >> $GITHUB_ENV   
+
+    - name: Reformat Environment Variable
+      run:  echo WS_ProductionBranches=","$WS_ProductionBranches"," >> $GITHUB_ENV   
       
     - name: Set Org API Key if branch is marked as production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST)
