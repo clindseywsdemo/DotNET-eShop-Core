@@ -31,7 +31,7 @@ jobs:
         WS_FILESYSTEMSCAN: false
         GH_BRANCH: ${CI_COMMIT_BRANCH}
       run: |
-        echo "Branch Scanning: $GH_BRANCH"
+        echo "Branch Scanning:  ${CI_COMMIT_BRANCH}"
         echo "Dev Key: $WS_DevKey"
         
         
