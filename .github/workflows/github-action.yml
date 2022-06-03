@@ -8,7 +8,7 @@ jobs:
     env:
       WS_ProductionBranches: "mdain,release"
       WS_DevKey: "e9325f5150604d60a5a5843e6155b65eb4c6ff62b16847c2895da8de40747c40"
-      WS_ProdKey: "ProdKey"
+      WS_ProdKey: ${{secrets.APIKEY}}
       
     runs-on: ubuntu-latest
     steps:
