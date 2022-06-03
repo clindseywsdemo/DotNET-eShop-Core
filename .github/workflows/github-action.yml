@@ -30,11 +30,11 @@ jobs:
       
     - name: Set Org API Key if branch is marked as production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST)
-      run: echo KeyToUse=$WS_ProdKey >> $GITHUB_ENV   
+      run: echo WS_APIKEY=$WS_ProdKey >> $GITHUB_ENV   
       
     - name: Set Org API Key if branch is non-production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST) == false
-      run: echo KeyToUse=$WS_DevKey >> $GITHUB_ENV   
+      run: echo WS_APIKEY=$WS_DevKey >> $GITHUB_ENV   
       
     - name: WhiteSource Unified Agent Scan
       run: |
@@ -46,7 +46,6 @@ jobs:
 
     - name: WhiteSource Unified Agent Scan
       env:
-        WS_APIKEY: env.KeyToUse
         WS_USERKEY: ${{secrets.USERKEY}}
         WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
         WS_PRODUCTNAME: ${{github.event.repository.name}}
