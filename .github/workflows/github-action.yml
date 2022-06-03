@@ -26,7 +26,7 @@ jobs:
       run:  echo "Woo Ho!"
      
     - name: Set Org API Key2
-      if:   contains($WS_ProductionBranches, '${GITHUB_REF_NAME}')
+      if:   contains(WS_ProductionBranches, '${GITHUB_REF_NAME}')
       run:  echo "Woo Ho 2!"
      
       
