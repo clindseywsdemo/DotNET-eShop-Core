@@ -22,7 +22,7 @@ jobs:
       run: dotnet build ./eShopOnWeb.sln --configuration Release
       
     - name: Set Org API Key
-      if:   contains('Hello world', 'llo')
+      if:   contains('Hello main world', '${GITHUB_REF_NAME}')
       run:  echo "Woo Ho!"
      
     - name: Set Org API Key2
