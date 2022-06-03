@@ -12,11 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0.x'
-        include-prerelease: true
         
     - name: Set Environment Var for Branch
       run:  echo PROJECT_TO_TEST=${GITHUB_REF_NAME} >> $GITHUB_ENV
@@ -29,7 +24,7 @@ jobs:
         
       
     - name: Set Org API Key
-      if:   contains('Hello main world', '$WS_Contains')
+      if:   contains('Hello main world', '$PROJECT_TO_TEST')
       run:  echo "Woo Ho!"
      
     - name: Set Org API Key2
