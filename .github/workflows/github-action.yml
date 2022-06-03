@@ -22,6 +22,10 @@ jobs:
         echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
         echo "Project To Test "$PROJECT_TO_TEST
         
+    - name: Conditionally Run
+      if: contains(env.PROJECT_TO_TEST, 'main')
+      run: |
+       echo "let's run"        
       
     - name: Set Org API Key
       if:   contains('Hello main world', '$PROJECT_TO_TEST')
