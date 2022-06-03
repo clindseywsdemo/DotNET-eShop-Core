@@ -17,33 +17,17 @@ jobs:
     - name: Set Environment Var for Branch
       run:  echo PROJECT_TO_TEST=${GITHUB_REF_NAME} >> $GITHUB_ENV
       
-    - name: Set Environment Var for Branch 2
-      run:  echo WS_ProductionBranchesToUse = ","${WS_ProductionBranches}"," >> $GITHUB_ENV
-        
-    - name: Conditionally Run
-      if: contains(env.PROJECT_TO_TEST, 'main')
-      run: echo "let's run!"        
-      
-    - name: Conditionally Run 2
+    - name: Set Org API Key if branch is marked as production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST)
       run: echo KeyToUse=$WS_ProdKey >> $GITHUB_ENV   
       
-    - name: Conditionally Run 2 False
+    - name: Set Org API Key if branch is non-production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST) == false
       run: echo KeyToUse=$WS_DevKey >> $GITHUB_ENV   
       
-    - name: Set Org API Key
-      if:   contains('Hello main world', '$PROJECT_TO_TEST')
-      run:  echo "Woo Ho!"
-     
-    - name: Set Org API Key2
-      if:   contains('main,release', 'main')
-      run:  echo "Woo Ho 2!"
-     
     - name: WhiteSource Unified Agent Scan
       run: |
-        echo "WS_Contains "$WS_Contains
+        echo "WS_ProductionBranches "$WS_ProductionBranches
         echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
         echo "Project To Test "$PROJECT_TO_TEST
         echo $KeyToUse
-        echo "WS_ProductionBranches: "$WS_ProductionBranchesToUse
