@@ -46,4 +46,4 @@ jobs:
         echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
         echo "Project To Test "$PROJECT_TO_TEST
         echo $KeyToUse
-        echo "WS_ProductionBranches: "env.WS_ProductionBranchesToUse
+        echo "WS_ProductionBranches: "$WS_ProductionBranchesToUse
