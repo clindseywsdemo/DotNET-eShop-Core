@@ -27,7 +27,7 @@ jobs:
       run: echo "let's run!"        
       
     - name: Conditionally Run 2
-      if: contains('main', env.PROJECT_TO_TEST)
+      if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST)
       run: echo "let's run2!"        
       
     - name: Set Org API Key
