@@ -8,6 +8,7 @@ jobs:
     env:
       WS_ProductionBranches: "main,release"
       WS_DevKey: "e9325f5150604d60a5a5843e6155b65eb4c6ff62b16847c2895da8de40747c40"
+      WS_Contains: contains($WS_ProductionBranches, '${GITHUB_REF_NAME}')
      
     runs-on: ubuntu-latest
     steps:
