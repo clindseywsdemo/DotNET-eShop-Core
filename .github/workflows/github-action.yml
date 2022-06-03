@@ -17,8 +17,8 @@ jobs:
     - name: Set Environment Var for Branch
       run:  echo PROJECT_TO_TEST=${GITHUB_REF_NAME} >> $GITHUB_ENV
       
-    - name: Test appending
-      run: echo KeyToUse2=","$WS_ProductionBranches"," >> $GITHUB_ENV   
+    - name: Update WS_ProductionBranches
+      run: echo WS_ProductionBranches=","$WS_ProductionBranches"," >> $GITHUB_ENV   
       
       
     - name: Set Org API Key if branch is marked as production
@@ -35,4 +35,4 @@ jobs:
         echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
         echo "Project To Test "$PROJECT_TO_TEST
         echo $KeyToUse
-        echo $KeyToUse2
+        echo $WS_ProductionBranches
