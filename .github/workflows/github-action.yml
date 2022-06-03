@@ -29,7 +29,7 @@ jobs:
         WS_PRODUCTNAME: ${{github.event.repository.name}}
         WS_PROJECTNAME: ${{github.ref}}
         WS_FILESYSTEMSCAN: false
-        GH_BRANCH: CI_COMMIT_BRANCH
+        GH_BRANCH: $CI_COMMIT_BRANCH
       run: |
         echo "Branch Scanning: $GH_BRANCH"
         echo "Dev Key: $WS_DevKey"
