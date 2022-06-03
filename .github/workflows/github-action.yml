@@ -38,7 +38,7 @@ jobs:
         echo "WS_PRODUCTNAME "$WS_PRODUCTNAME
         echo "Contains:"$WS_Contains
         
-        if [[contains('Hello world', 'llo') ]]; then
+        if [ contains('Hello world', 'llo') ]; then
           echo "test successful"
         fi
         
