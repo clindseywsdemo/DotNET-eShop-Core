@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
         
     - name: Set Environment Var for Branch
-      run:  echo PROJECT_TO_TEST=${GITHUB_REF_NAME} >> $GITHUB_ENV
+      run:  echo PROJECT_TO_TEST=","${GITHUB_REF_NAME}"," >> $GITHUB_ENV
 
     - name: Reformat Environment Variable
       run:  echo WS_ProductionBranches=","$WS_ProductionBranches"," >> $GITHUB_ENV   
