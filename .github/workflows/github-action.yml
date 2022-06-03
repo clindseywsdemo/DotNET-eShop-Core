@@ -18,8 +18,7 @@ jobs:
       run:  echo PROJECT_TO_TEST=${GITHUB_REF_NAME} >> $GITHUB_ENV
       
     - name: Test appending
-      if: contains("$WS_ProductionBranches", env.PROJECT_TO_TEST)
-      run: echo KeyToUse2=$WS_ProdKey >> $GITHUB_ENV   
+      run: echo KeyToUse2=$WS_ProductionBranches >> $GITHUB_ENV   
       
       
     - name: Set Org API Key if branch is marked as production
