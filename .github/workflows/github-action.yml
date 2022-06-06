@@ -28,11 +28,17 @@ jobs:
       
     - name: Set Org API Key if branch is marked as production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST)
-      run: echo WS_APIKEY=${{secrets.APIKEY}} >> $GITHUB_ENV   
+      run: |
+        echo WS_APIKEY=${{secrets.APIKEY}} >> $GITHUB_ENV   
+        echo "WS_APIKEY:"$WS_APIKEY
+        echo WS_USERKEY2="UserKeyProd" >> $GITHUB_ENV   
       
     - name: Set Org API Key if branch is non-production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST) == false
-      run: echo WS_APIKEY=${{secrets.DEVAPIKEY}} >> $GITHUB_ENV   
+      run: |
+        echo WS_APIKEY=${{secrets.DEVAPIKEY}} >> $GITHUB_ENV   
+        echo "WS_APIKEY:"$WS_APIKEY
+        echo WS_USERKEY2="UserKeyDev" >> $GITHUB_ENV   
       
     - name: WhiteSource Unified Agent Scan
       env:
@@ -45,6 +51,8 @@ jobs:
         
       run: |
         echo "WSAPIKEY"$WS_APIKEY
+        echo "WS_USERKEY"$WS_USERKEY
+        echo "WS_USERKEY2"$WS_USERKEY2
         echo Downloading WhiteSource Unified Agent
         curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
         if [[ "$(curl -sL https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar.sha256)" != "$(sha256sum wss-unified-agent.jar)" ]] ; then
