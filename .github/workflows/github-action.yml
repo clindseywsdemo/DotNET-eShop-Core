@@ -7,8 +7,6 @@ jobs:
   build:
     env:
       WS_ProductionBranches: "main,release"
-      WS_DevKey: ${{secrets.DEVAPIKEY}}
-      WS_ProdKey: ${{secrets.APIKEY}}
       
     runs-on: ubuntu-latest
     steps:
@@ -30,20 +28,12 @@ jobs:
       
     - name: Set Org API Key if branch is marked as production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST)
-      run: echo WS_APIKEY=$WS_ProdKey >> $GITHUB_ENV   
+      run: echo WS_APIKEY=${{secrets.APIKEY}} >> $GITHUB_ENV   
       
     - name: Set Org API Key if branch is non-production
       if: contains(env.WS_ProductionBranches, env.PROJECT_TO_TEST) == false
-      run: echo WS_APIKEY=$WS_DevKey >> $GITHUB_ENV   
+      run: echo WS_APIKEY=${{secrets.DEVAPIKEY}} >> $GITHUB_ENV   
       
-    - name: WhiteSource Unified Agent Scan
-      run: |
-        echo "WS_ProductionBranches "$WS_ProductionBranches
-        echo "GITHUB_REF_NAME = "${GITHUB_REF_NAME}
-        echo "Project To Test "$PROJECT_TO_TEST
-        echo $KeyToUse
-        echo $WS_ProductionBranches
-
     - name: WhiteSource Unified Agent Scan
       env:
         WS_USERKEY: ${{secrets.USERKEY}}
