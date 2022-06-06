@@ -58,3 +58,5 @@ jobs:
           echo Starting WhiteSource Scan
           java -jar wss-unified-agent.jar
         fi
+        
+        
