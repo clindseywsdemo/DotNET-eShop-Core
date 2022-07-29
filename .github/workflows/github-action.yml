@@ -1,5 +1,4 @@
 name: Whitesource Unified Agent Scan - .NET (dotnet)
-
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
